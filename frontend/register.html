@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Maison — Create Account</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #fbf6ef;
+            --cream-dark: #f4e9dc;
+            --brown: #60483e;
+            --brown-dark: #3e2c27;
+            --terracotta: #b86f52;
+            --peach: #d99a7d;
+            --rose: #c98578;
+            --muted: #8c7c75;
+            --border: #eaded2;
+            --white: #ffffff;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            background: var(--cream);
+            color: var(--brown-dark);
+            display: flex;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* LEFT SIDE */
+
+        .visual {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(62, 44, 39, .96),
+                    rgba(113, 78, 66, .94)
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .visual::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: rgba(217, 154, 125, .16);
+            top: -130px;
+            left: -130px;
+        }
+
+        .visual::after {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: rgba(201, 155, 84, .12);
+            bottom: -140px;
+            right: -100px;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            color: white;
+        }
+
+        .brand {
+            font-family: "Playfair Display", serif;
+            font-size: 58px;
+            margin-bottom: 8px;
+        }
+
+        .brand-subtitle {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: #d8c7be;
+            margin-bottom: 55px;
+        }
+
+        .visual h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            line-height: 1.15;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .visual-description {
+            color: #d8cbc5;
+            line-height: 1.8;
+            font-size: 14px;
+            max-width: 430px;
+        }
+
+        .features {
+            margin-top: 40px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .feature-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .feature-text strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .feature-text span {
+            color: #c9bbb5;
+            font-size: 11px;
+        }
+
+        /* RIGHT SIDE */
+
+        .form-area {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: #fffaf6;
+        }
+
+        .register-card {
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .mobile-logo {
+            display: none;
+        }
+
+        .form-header {
+            margin-bottom: 28px;
+        }
+
+        .form-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 34px;
+            color: var(--brown-dark);
+            margin-bottom: 7px;
+        }
+
+        .form-header p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--brown);
+            letter-spacing: .5px;
+            margin-bottom: 7px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .field input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            background: white;
+            outline: none;
+            padding: 0 14px 0 42px;
+            color: var(--brown-dark);
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        .field input:focus {
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(184,111,82,.08);
+        }
+
+        .password-wrapper input {
+            padding-right: 48px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .password-strength {
+            margin-top: 7px;
+        }
+
+        .strength-bars {
+            display: flex;
+            gap: 4px;
+            height: 4px;
+        }
+
+        .strength-bar {
+            flex: 1;
+            background: #eee4dc;
+            border-radius: 5px;
+            transition: .2s;
+        }
+
+        .strength-text {
+            margin-top: 5px;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin: 20px 0;
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .terms input {
+            margin-top: 3px;
+            accent-color: var(--terracotta);
+        }
+
+        .terms a {
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        .register-btn {
+            width: 100%;
+            height: 49px;
+            border: 0;
+            border-radius: 11px;
+            background: var(--brown);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .25s;
+        }
+
+        .register-btn:hover {
+            background: var(--brown-dark);
+            transform: translateY(-1px);
+        }
+
+        .register-btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0;
+            color: #b3a49c;
+            font-size: 10px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            background: var(--border);
+            flex: 1;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .social-btn {
+            height: 44px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 10px;
+            color: var(--brown);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            background: var(--cream);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .login-link a {
+            color: var(--terracotta);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .message {
+            display: none;
+            padding: 11px 13px;
+            border-radius: 9px;
+            margin-bottom: 16px;
+            font-size: 11px;
+        }
+
+        .message.error {
+            display: block;
+            background: #f8e7e4;
+            color: #9c5145;
+            border: 1px solid #efd0ca;
+        }
+
+        .message.success {
+            display: block;
+            background: #e8f0e5;
+            color: #55704d;
+            border: 1px solid #d0e0ca;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .page {
+                grid-template-columns: 1fr;
+            }
+
+            .visual {
+                display: none;
+            }
+
+            .form-area {
+                min-height: 100vh;
+                padding: 30px 20px;
+            }
+
+            .mobile-logo {
+                display: block;
+                text-align: center;
+                margin-bottom: 35px;
+            }
+
+            .mobile-logo h1 {
+                font-family: "Playfair Display", serif;
+                font-size: 38px;
+                color: var(--brown);
+            }
+
+            .mobile-logo p {
+                font-size: 9px;
+                letter-spacing: 3px;
+                color: var(--muted);
+                margin-top: 3px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .form-area {
+                padding: 25px 16px;
+            }
+
+            .form-header h1 {
+                font-size: 29px;
+            }
+
+            .social-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- LEFT BRANDING AREA -->
+
+    <section class="visual">
+
+        <div class="visual-content">
+
+            <div class="brand">
+                Maison
+            </div>
+
+            <div class="brand-subtitle">
+                FASHION EXCHANGE
+            </div>
+
+            <h2>
+                Your wardrobe,<br>
+                beautifully reimagined.
+            </h2>
+
+            <p class="visual-description">
+                Join a curated fashion community where pre-loved
+                pieces find new stories. Discover unique styles,
+                sell what you no longer wear and explore a smarter
+                way to shop fashion.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ♢
+                    </div>
+
+                    <div class="feature-text">
+                        <strong>Curated Fashion</strong>
+                        <span>Discover distinctive pieces from our community.</span>
+                    </div>
+
+                </div>
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ✦
+                    </div>
+
+                    <div class="feature-text">
+                        <strong>Virtual Fitting Room</strong>
+                        <span>Preview outfits before making your choice.</span>
+                    </div>
+
+                </div>
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ↗
+                    </div>
+
+                    <div class="feature-text">
+                        <strong>Give Clothes a Second Life</strong>
+                        <span>List your pieces and connect with new owners.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REGISTER AREA -->
+
+    <main class="form-area">
+
+        <div class="register-card">
+
+            <!-- Mobile Logo -->
+
+            <div class="mobile-logo">
+
+                <h1>Maison</h1>
+
+                <p>FASHION EXCHANGE</p>
+
+            </div>
+
+
+            <div class="form-header">
+
+                <h1>Create your account</h1>
+
+                <p>
+                    Join Maison and start your fashion journey.
+                </p>
+
+            </div>
+
+
+            <!-- Backend response message -->
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <form id="registerForm">
+
+                <!-- NAME -->
+
+                <div class="field">
+
+                    <label for="name">
+                        FULL NAME
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ♙
+                        </span>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Username"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="field">
+
+                    <label for="email">
+                        EMAIL ADDRESS
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            @
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Your email"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="field">
+
+                    <label for="password">
+                        PASSWORD
+                    </label>
+
+                    <div class="input-wrapper password-wrapper">
+
+                        <span class="input-icon">
+                            ◈
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="togglePassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+
+                    <div class="password-strength">
+
+                        <div class="strength-bars">
+
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+
+                        </div>
+
+                        <div
+                            class="strength-text"
+                            id="strengthText"
+                        >
+                            Use at least 8 characters.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="field">
+
+                    <label for="confirmPassword">
+                        CONFIRM PASSWORD
+                    </label>
+
+                    <div class="input-wrapper password-wrapper">
+
+                        <span class="input-icon">
+                            ◈
+                        </span>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Enter your password again"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="toggleConfirmPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+
+                        I agree to the
+                        <a href="#" onclick="return false;">
+                            Terms of Service
+                        </a>
+                        and
+                        <a href="#" onclick="return false;">
+                            Privacy Policy
+                        </a>
+                        of Maison.
+
+                    </label>
+
+                </div>
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                    id="registerButton"
+                >
+                    Create Maison Account
+                </button>
+
+            </form>
+
+
+            <div class="divider">
+                OR CONTINUE WITH
+            </div>
+
+
+            <div class="social-buttons">
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    onclick="socialLogin('Google')"
+                >
+                    ◉ &nbsp; Google
+                </button>
+
+                <button
+                    type="button"
+                    class="social-btn"
+                    onclick="socialLogin('Apple')"
+                >
+                     &nbsp; Apple
+                </button>
+
+            </div>
+
+
+            <div class="login-link">
+
+                Already have a Maison account?
+
+                <a href="login.html">
+                    Sign in
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    const form =
+        document.getElementById("registerForm");
+
+    const password =
+        document.getElementById("password");
+
+    const confirmPassword =
+        document.getElementById("confirmPassword");
+
+    const message =
+        document.getElementById("message");
+
+    const registerButton =
+        document.getElementById("registerButton");
+
+    const strengthText =
+        document.getElementById("strengthText");
+
+    const strengthBars =
+        document.querySelectorAll(".strength-bar");
+
+
+    /* ---------------- MESSAGE ---------------- */
+
+    function showMessage(text, type) {
+
+        message.textContent = text;
+
+        message.className =
+            "message " + type;
+
+    }
+
+
+    /* ---------------- PASSWORD VISIBILITY ---------------- */
+
+    document
+        .getElementById("togglePassword")
+        .addEventListener("click", function() {
+
+            if (password.type === "password") {
+
+                password.type = "text";
+                this.textContent = "Hide";
+
+            } else {
+
+                password.type = "password";
+                this.textContent = "Show";
+
+            }
+
+        });
+
+
+    document
+        .getElementById("toggleConfirmPassword")
+        .addEventListener("click", function() {
+
+            if (confirmPassword.type === "password") {
+
+                confirmPassword.type = "text";
+                this.textContent = "Hide";
+
+            } else {
+
+                confirmPassword.type = "password";
+                this.textContent = "Show";
+
+            }
+
+        });
+
+
+    /* ---------------- PASSWORD STRENGTH ---------------- */
+
+    password.addEventListener("input", function() {
+
+        const value = password.value;
+
+        let strength = 0;
+
+        if (value.length >= 8) {
+            strength++;
+        }
+
+        if (/[A-Z]/.test(value)) {
+            strength++;
+        }
+
+        if (/[0-9]/.test(value)) {
+            strength++;
+        }
+
+        if (/[^A-Za-z0-9]/.test(value)) {
+            strength++;
+        }
+
+
+        strengthBars.forEach(function(bar, index) {
+
+            bar.style.background = "#eee4dc";
+
+            if (index < strength) {
+
+                if (strength === 1) {
+                    bar.style.background = "#c98578";
+                }
+
+                if (strength === 2) {
+                    bar.style.background = "#d99a7d";
+                }
+
+                if (strength === 3) {
+                    bar.style.background = "#c99b54";
+                }
+
+                if (strength === 4) {
+                    bar.style.background = "#89927d";
+                }
+
+            }
+
+        });
+
+
+        if (value.length === 0) {
+
+            strengthText.textContent =
+                "Use at least 8 characters.";
+
+        } else if (strength === 1) {
+
+            strengthText.textContent =
+                "Weak password.";
+
+        } else if (strength === 2) {
+
+            strengthText.textContent =
+                "Fair password.";
+
+        } else if (strength === 3) {
+
+            strengthText.textContent =
+                "Good password.";
+
+        } else {
+
+            strengthText.textContent =
+                "Strong password.";
+
+        }
+
+    });
+
+
+    /* ---------------- REGISTER ---------------- */
+
+    form.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name")
+            .value
+            .trim();
+
+        const email =
+            document.getElementById("email")
+            .value
+            .trim();
+
+        const passwordValue =
+            password.value;
+
+        const confirmPasswordValue =
+            confirmPassword.value;
+
+
+        /* Password confirmation */
+
+        if (passwordValue !== confirmPasswordValue) {
+
+            showMessage(
+                "Passwords do not match.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* Password length */
+
+        if (passwordValue.length < 8) {
+
+            showMessage(
+                "Password must contain at least 8 characters.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* Disable button */
+
+        registerButton.disabled = true;
+
+        registerButton.textContent =
+            "Creating your account...";
+
+
+        try {
+
+            /*
+             * IMPORTANT:
+             *
+             * This URL must match the register
+             * endpoint in your backend.
+             */
+
+            const response = await fetch(
+                "http://localhost:5000/api/auth/register",
+                {
+                    method: "POST",
+
+                    credentials: "include",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: passwordValue
+                    })
+                }
+            );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                showMessage(
+                    data.message ||
+                    "Unable to create your account.",
+                    "error"
+                );
+
+                registerButton.disabled = false;
+
+                registerButton.textContent =
+                    "Create Maison Account";
+
+                return;
+            }
+
+
+            /*
+             * If your backend returns a token
+             * immediately after registration,
+             * save it here.
+             */
+
+            if (data.token) {
+
+                localStorage.setItem(
+                    "token",
+                    data.token
+                );
+
+            }
+
+
+            showMessage(
+                "Your Maison account has been created successfully!",
+                "success"
+            );
+
+
+            /*
+             * Go to login page after
+             * successful registration.
+             */
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1500);
+
+
+        } catch (error) {
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            showMessage(
+                "Unable to connect to the server. Please make sure your backend is running.",
+                "error"
+            );
+
+
+            registerButton.disabled = false;
+
+            registerButton.textContent =
+                "Create Maison Account";
+
+        }
+
+    });
+
+
+    /* ---------------- SOCIAL LOGIN ---------------- */
+
+    function socialLogin(provider) {
+
+        showMessage(
+            `${provider} registration will be connected to your authentication provider.`,
+            "success"
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
